@@ -7,9 +7,18 @@ import (
 )
 
 func main() {
+	salesMen := []string{"Chris", "Pepe", "Nick"}
+	salesmanSelected := getRandomSalesMan(salesMen)
+	fmt.Println(salesmanSelected)
+}
+
+func getRandomSalesMan(salesMen []string) string {
+	numberOfSales := len(salesMen)
+	return salesMen[getRandomNumber(numberOfSales)]
+}
+
+func getRandomNumber(top int) int {
 	rand.Seed(time.Now().UnixNano())
-	numberOfSales := 10
-	salesSelected := rand.Intn(numberOfSales)
-	fmt.Println(salesSelected)
+	return (rand.Intn(top))
 
 }
