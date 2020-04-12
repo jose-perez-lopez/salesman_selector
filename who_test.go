@@ -36,7 +36,7 @@ func TestGetRandomSalesMan(t *testing.T) {
 	repetitions := len(salesMen) * 10
 	var frecuencies = make(map[string]int)
 	for i := 0; i < repetitions; i++ {
-		salesMan := getRandomSalesMan(salesMen)
+		salesMan, _ := getRandomSalesMan(salesMen)
 		if frecuencies[salesMan] == 0 {
 			frecuencies[salesMan] = 1
 		} else {
@@ -48,5 +48,13 @@ func TestGetRandomSalesMan(t *testing.T) {
 		if frecuencies[name] == 0 {
 			t.Errorf("%s din´t happend anytime, it is posible but smell bad", name)
 		}
+	}
+}
+
+func TestGetRandomSalesManWithNoNames(t *testing.T) {
+	var names = []string{}
+	_, err := getRandomSalesMan(names)
+	if err == nil {
+		t.Errorf("I call getRandomSalesMan with no names and it did report an error")
 	}
 }

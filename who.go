@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"log"
 	"math/rand"
@@ -10,16 +11,19 @@ import (
 
 func main() {
 	salesMen := os.Args[1:]
-	salesmanSelected := getRandomSalesMan(salesMen)
+	salesmanSelected, err := getRandomSalesMan(salesMen)
+	if err != nil {
+		log.Fatal(err)
+	}
 	fmt.Printf("\a\v\tAn the winer is: %s\n\n", salesmanSelected)
 }
 
-func getRandomSalesMan(salesMen []string) string {
+func getRandomSalesMan(salesMen []string) (string, error) {
 	if len(salesMen) == 0 {
-		log.Fatal("No salesmen provides, someone has to play!")
+		return "", errors.New("No salesmen provides, someone has to play!")
 	}
 	numberOfSales := len(salesMen)
-	return salesMen[getRandomNumber(numberOfSales)]
+	return salesMen[getRandomNumber(numberOfSales)], nil
 }
 
 func getRandomNumber(top int) int {
