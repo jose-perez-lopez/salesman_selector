@@ -20,7 +20,7 @@ func main() {
 
 func getRandomSalesMan(salesMen []string) (string, error) {
 	if len(salesMen) == 0 {
-		return "", errors.New("No salesmen provides, someone has to play!")
+		return "", errors.New("no salesmen provides, someone has to play")
 	}
 	numberOfSales := len(salesMen)
 	return salesMen[getRandomNumber(numberOfSales)], nil
