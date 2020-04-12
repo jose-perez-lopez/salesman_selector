@@ -49,7 +49,4 @@ func TestGetRandomSalesMan(t *testing.T) {
 			t.Errorf("%s din´t happend anytime, it is posible but smell bad", name)
 		}
 	}
-
-	//	log.Println(frecuencies)
-
 }

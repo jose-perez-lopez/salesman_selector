@@ -2,17 +2,22 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"math/rand"
+	"os"
 	"time"
 )
 
 func main() {
-	salesMen := []string{"Chris", "Pepe", "Nick"}
+	salesMen := os.Args[1:]
 	salesmanSelected := getRandomSalesMan(salesMen)
-	fmt.Println(salesmanSelected)
+	fmt.Printf("\a\v\tAn the winer is: %s\n\n", salesmanSelected)
 }
 
 func getRandomSalesMan(salesMen []string) string {
+	if len(salesMen) == 0 {
+		log.Fatal("No salesmen provides, someone has to play!")
+	}
 	numberOfSales := len(salesMen)
 	return salesMen[getRandomNumber(numberOfSales)]
 }
